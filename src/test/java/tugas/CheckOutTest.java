@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,10 +14,16 @@ import com.testng.pageobjects.LoginPage;
 import com.testng.pageobjects.ProductsPage;
 
 public class CheckOutTest {
+    
+    WebDriver driver = null;
+    @BeforeTest
+    public void setup (){
+       driver = new ChromeDriver();
+    }
 
     @Test(dataProvider = "getData")
     public void checkoutProduct(HashMap<String,String> inputMap) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+       
 
         String successOrder = inputMap.get("validate");
 
